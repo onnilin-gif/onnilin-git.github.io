@@ -2,6 +2,7 @@
 permalink: /
 title: "정지은 (Jieun Jung) | Portfolio"
 author_profile: true
+layout: home
 redirect_from: 
   - /about/
   - /about.html

@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+{% include base_path %}
+
+<div id="main" role="main">
+  {% include sidebar.html %}
+
+  <div class="home-content">
+    <div class="page__inner-wrap">
+      <section class="page__content" itemprop="text">
+        {{ content }}
+      </section>
+    </div>
+  </div>
+</div>
