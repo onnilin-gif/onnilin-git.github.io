@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "정지은 (Jieun Jeong) | Portfolio"
+title: "정지은 (Jieun Jung) | Portfolio"
 author_profile: true
 redirect_from: 
   - /about/
