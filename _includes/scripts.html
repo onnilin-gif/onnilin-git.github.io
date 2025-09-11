@@ -1,3 +1,19 @@
 <script type="module" src="{{ base_path }}/assets/js/main.min.js"></script>
 
 {% include analytics.html %}
+
+<script src="{{ base_path }}/assets/js/three.r134.min.js"></script>
+<script src="{{ base_path }}/assets/js/vanta.waves.min.js"></script>
+<script>
+VANTA.WAVES({
+  el: "#vanta-bg",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x6190ac
+})
+</script>
