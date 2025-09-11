@@ -4,6 +4,8 @@
 
 #main {
   background: transparent;
+  position: relative;
+  z-index: 1;
   @include container;
   @include clearfix;
   margin-top: 2em;

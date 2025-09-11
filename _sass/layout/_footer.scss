@@ -4,8 +4,10 @@
 
 .page__footer {
   @include clearfix;
-  background-color: var(--global-footer-bg-color);
+  background: transparent;
   color: var(--global-text-color-light);
+  position: relative;
+  z-index: 1;
 
   float: left;
   margin-left: 0;
