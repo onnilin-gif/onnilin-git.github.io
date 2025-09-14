@@ -18,3 +18,8 @@ package-lock.json
 
 # Ignore folders related to IDEs
 .vscode/
+
+# Ignore Gemini CLI cache and artifacts
+.cache/
+alias/
+versions/
