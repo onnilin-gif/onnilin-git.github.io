@@ -20,7 +20,9 @@ redirect_from:
 - **주요 학습 분야:** 웹 프로그래밍, 문제 해결 프로그래밍
 
 ### 💻 Skills
-- **Languages:** C, Python
+- **Languages:** Python, TypeScript, JavaScript, HTML, Shell, SQL
+- **Frameworks/Libraries:** Streamlit
+- **Tools:** Git, GitHub, MySQL
 
 <br>
 

@@ -34,4 +34,6 @@ redirect_from:
 ---
 
 ## 💻 Skills
-* **Programming Languages:** C, Python
+* **Languages:** Python, TypeScript, JavaScript, HTML, Shell, SQL
+* **Frameworks/Libraries:** Streamlit
+* **Tools:** Git, GitHub, MySQL
