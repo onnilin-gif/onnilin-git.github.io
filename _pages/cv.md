@@ -34,6 +34,5 @@ redirect_from:
 ---
 
 ## 💻 Skills
-* **Languages:** Python, TypeScript, JavaScript, HTML, Shell, SQL
-* **Frameworks/Libraries:** Streamlit
-* **Tools:** Git, GitHub, MySQL
+* **Programming Languages:** C, Python
+* **Studying:** 문제해결형 프로그래밍, 웹 프로그래밍, 아트코딩
