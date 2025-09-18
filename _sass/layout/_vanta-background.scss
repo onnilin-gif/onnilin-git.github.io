@@ -1,18 +1,47 @@
-#vanta-background {
-  position: fixed;
+#vanta-header {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    background: linear-gradient(to top, var(--global-bg-color) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+  }
 }
 
-.masthead,
+#vanta-footer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    background: linear-gradient(to bottom, var(--global-bg-color) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+  }
+}
+
+.masthead {
+  position: relative;
+}
+
 .page__footer {
-  background-color: rgba(255, 255, 255, 0.8);
-}
-
-[data-theme="dark"] .masthead,
-[data-theme="dark"] .page__footer {
-  background-color: rgba(0, 0, 0, 0.8);
+  position: relative;
 }
