@@ -225,12 +225,26 @@
         .about-content {
             max-width: 800px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
+            gap: 2rem;
+        }
+
+        .bio-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border-color);
+            box-shadow: 0 4px 10px var(--shadow-color);
         }
         
-        .about-content p {
+        .about-content .bio-text {
             font-size: 1.1rem;
         }
+
 
         /* ------------------- */
         /* Tech Stack Section */
@@ -325,6 +339,17 @@
             h1 { font-size: 3.5rem; }
             .nav-links { display: flex; }
             .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            
+            .about-content {
+                flex-direction: row;
+                text-align: left;
+                gap: 3rem;
+            }
+
+            .about-content .bio-photo {
+                width: 200px;
+                height: 200px;
+            }
         }
 
         /* Desktop */
@@ -375,9 +400,12 @@
             <div class="container fade-in">
                 <h2 class="section-title">About Me</h2>
                 <div class="about-content">
-                    <p>
-                        I'm a passionate developer with a knack for creating clean, efficient, and user-friendly applications. With a strong foundation in both frontend and backend technologies, I enjoy bringing ideas to life, from concept to deployment. I am constantly learning and exploring new technologies to improve my craft.
-                    </p>
+                    <img src="jieunim.jpg" alt="Onnilin profile picture" class="bio-photo">
+                    <div class="bio-text">
+                        <p>
+                            I'm a passionate developer with a knack for creating clean, efficient, and user-friendly applications. With a strong foundation in both frontend and backend technologies, I enjoy bringing ideas to life, from concept to deployment. I am constantly learning and exploring new technologies to improve my craft.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
