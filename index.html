@@ -1,42 +1,38 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="dark">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO & Open Graph Meta Tags -->
-    <title>Onnilin | 개발 학습 기록장</title>
-    <meta name="description" content="한신대학교 AI/SW계열 25학번 Onnilin의 학습 기록 포트폴리오입니다.">
-    <meta name="author" content="Onnilin">
-    <meta property="og:title" content="Onnilin | 포트폴리오">
-    <meta property="og:description" content="배움을 코드로 실현하는 개발자, Onnilin의 학습 기록장입니다.">
+    <title>JieunJung | Portfolio</title>
+    <meta name="description" content="한신대학교 AI/SW계열 25학번 JieunJung의 포트폴리오.">
+    <meta name="author" content="JieunJung">
+    <meta property="og:title" content="JieunJung | Portfolio">
+    <meta property="og:description" content="혁신을 꿈꾸는 주니어 개발자, 정지은의 포트폴리오입니다.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://onnilin-gif.github.io/">
     
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✨</text></svg>">
 
-    <!-- Google Fonts: Noto Sans KR -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
     <!--
     ========================================================================
-    CSS STYLES (Cyberpunk/Neon Theme)
+    CSS STYLES (Midnight Blue & Triangulation Theme)
     ========================================================================
     -->
     <style>
         :root {
-            --bg-color: #0d0221;
-            --text-color: #b0a8d9;
-            --heading-color: #f0e8ff;
-            --card-bg-color: rgba(15, 4, 48, 0.6);
-            --border-color: rgba(0, 247, 255, 0.2);
-            --accent-color: #00f7ff; /* Neon Cyan */
-            --accent-hover-color: #8bfdff;
-            --secondary-accent-color: #ff00ff; /* Neon Magenta */
-            --shadow-color: rgba(0, 247, 255, 0.1);
+            --bg-color: #020c1b;
+            --text-color: #cdd6f4;
+            --heading-color: #ffffff;
+            --card-bg-color: #0f172a;
+            --border-color: rgba(0, 255, 255, 0.2);
+            --accent-color-1: #00ffff; /* Cyan */
+            --accent-color-2: #4f46e5; /* Electric Blue */
+            --accent-color-3: #a5b4fc; /* Pale Azure */
+            --shadow-color: rgba(0, 255, 255, 0.1);
             --font-main: 'Noto Sans KR', sans-serif;
         }
 
@@ -48,7 +44,6 @@
 
         html {
             scroll-behavior: smooth;
-            font-size: 16px;
         }
 
         body {
@@ -56,149 +51,109 @@
             color: var(--text-color);
             font-family: var(--font-main);
             line-height: 1.7;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         h1, h2, h3 {
             color: var(--heading-color);
             font-weight: 700;
             line-height: 1.3;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 3px var(--accent-color);
         }
 
-        h1 { font-size: 2.5rem; }
-        h2 { font-size: 2rem; }
-        h3 { font-size: 1.5rem; }
+        h1 { font-size: 3rem; font-weight: 900; }
+        h2 { font-size: 2.2rem; margin-bottom: 3rem; text-align: center;}
+        h3 { font-size: 1.5rem; color: var(--accent-color-3); }
 
         a {
-            color: var(--accent-color);
+            color: var(--accent-color-1);
             text-decoration: none;
-            transition: color 0.3s ease, text-shadow 0.3s ease;
+            transition: color 0.3s ease;
         }
-
-        a:hover {
-            color: var(--accent-hover-color);
-            text-shadow: 0 0 5px var(--accent-hover-color);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        a:hover { color: #fff; }
 
         .container {
             width: 100%;
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
         }
 
         .section {
-            padding: 5rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
+            padding: 6rem 0;
+            position: relative;
+            background-color: var(--bg-color);
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .main-header {
-            position: fixed;
+        /* Animation Canvas */
+        .header-canvas, .footer-canvas {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 100;
-            padding: 1rem 0;
-            background: rgba(13, 2, 33, 0.7);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-        }
-        
-        .main-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            height: 100%;
+            z-index: 1;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--heading-color);
-        }
-        
-        .nav-links {
-            display: none;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-        }
-        
         .hero {
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             text-align: center;
-            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+            background-color: transparent; /* Allows canvas to show */
         }
         
+        .hero .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
         .hero h1 {
-            font-size: 2.2rem;
             margin-bottom: 1rem;
         }
 
         .hero .tagline {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            opacity: 0.8;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
             font-weight: 300;
         }
 
         .cta-button {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
             font-weight: 500;
             font-size: 1.1rem;
-            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .cta-button:hover {
-            background-color: var(--accent-color);
-            color: var(--bg-color);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--accent-color-1);
             transform: translateY(-3px);
-            box-shadow: 0 0 15px var(--accent-color);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.1);
         }
         
         .about-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            line-height: 1.8;
         }
 
         .curriculum-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
@@ -207,49 +162,38 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             display: flex;
             flex-direction: column;
         }
 
         .curriculum-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 0 20px var(--shadow-color);
-            border-color: var(--accent-color);
-        }
-        
-        .curriculum-card h3 {
-             margin-bottom: 0.5rem;
-             color: var(--accent-color);
-             text-shadow: 0 0 5px var(--accent-color);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            border-color: var(--accent-color-1);
         }
         
         .curriculum-card p {
-            margin-bottom: 1.5rem;
+            margin: 1rem 0;
             flex-grow: 1;
         }
 
-        .card-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        .card-tags .tag {
-            background-color: var(--border-color);
-            color: var(--accent-hover-color);
-            padding: 0.2rem 0.6rem;
+        .card-tag {
+            background-color: rgba(0, 255, 255, 0.1);
+            color: var(--accent-color-1);
+            padding: 0.3rem 0.7rem;
             border-radius: 4px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 500;
+            display: inline-block;
         }
 
         .main-footer {
-            padding: 3rem 0;
+            padding: 6rem 0;
             text-align: center;
-            border-top: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            background-color: transparent; /* Allows canvas to show */
         }
         
         .social-links {
@@ -257,11 +201,7 @@
             display: flex;
             justify-content: center;
             gap: 1.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .social-links a {
-            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
         }
         
         .copyright {
@@ -270,135 +210,229 @@
         }
 
         @media (min-width: 768px) {
-            h1 { font-size: 3rem; }
-            .hero h1 { font-size: 3.2rem; }
-            .nav-links { display: flex; }
-            .curriculum-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (min-width: 1024px) {
-            .curriculum-grid { grid-template-columns: repeat(3, 1fr); }
+            h1 { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="container">
-            <a href="#" class="logo">Onnilin</a>
-            <ul class="nav-links">
-                <li><a href="#about">소개</a></li>
-                <li><a href="#curriculum">학습 과정</a></li>
-                <li><a href="#contact">연락처</a></li>
-            </ul>
-        </div>
-    </header>
-
     <main>
         <section class="hero" id="home">
-            <div class="container fade-in">
-                <h1>배움을 코드로 실현하는 개발자, Onnilin입니다.</h1>
-                <p class="tagline">한신대학교 AI/SW계열 25학번 | 끊임없이 성장하는 학습 기록장</p>
-                <a href="#curriculum" class="cta-button">학습 과정 보기</a>
+            <canvas id="hero-canvas" class="header-canvas"></canvas>
+            <div class="container">
+                <h1>JieunJung</h1>
+                <p class="tagline">한신대학교 AI/SW계열 25학번 | 혁신을 꿈꾸는 주니어 개발자</p>
+                <a href="#curriculum" class="cta-button">기술 스택 보기</a>
             </div>
         </section>
 
         <section id="about" class="section">
-            <div class="container fade-in">
-                <h2 class="section-title">소개 (About)</h2>
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
                 <div class="about-content">
-                    <p>
-                        소프트웨어 공학에 대한 깊은 열정을 가진 학생 개발자입니다. 저는 복잡한 문제를 논리적으로 분해하고, 효율적인 코드로 해결책을 만드는 과정에서 큰 보람을 느낍니다. 꾸준한 학습과 도전을 통해 사용자에게 가치를 제공하는 개발자로 성장하는 것이 저의 목표입니다.
-                    </p>
+                    <p>소프트웨어의 무한한 가능성을 믿으며, 배움을 통해 세상을 최적화하고 싶은 개발자 정지은입니다.</p>
                 </div>
             </div>
         </section>
 
         <section id="curriculum" class="section">
-            <div class="container fade-in">
-                <h2 class="section-title">수강 과목 및 학습 내용 (Curriculum)</h2>
+            <div class="container">
+                <h2 class="section-title">수강 과목 및 핵심 역량</h2>
                 <div class="curriculum-grid">
                     <div class="curriculum-card">
-                        <h3>C언어 (C Language)</h3>
+                        <h3>C언어</h3>
                         <p>메모리 관리와 포인터, 자료구조의 기초를 다지며 컴퓨터의 동작 원리를 깊이 있게 이해했습니다.</p>
-                        <div class="card-tags">
-                            <span class="tag">#System</span>
-                            <span class="tag">#Basics</span>
-                        </div>
+                        <span class="card-tag">#System</span>
                     </div>
                     <div class="curriculum-card">
-                        <h3>파이썬 (Python)</h3>
+                        <h3>파이썬</h3>
                         <p>데이터 처리와 자동화를 위한 문법을 익히고, 간결하고 효율적인 코딩 스타일을 학습했습니다.</p>
-                        <div class="card-tags">
-                            <span class="tag">#Data</span>
-                            <span class="tag">#Scripting</span>
-                        </div>
+                        <span class="card-tag">#Data</span>
                     </div>
                     <div class="curriculum-card">
-                        <h3>웹 프로그래밍 (Web Programming)</h3>
-                        <p>HTML, CSS, JavaScript를 활용하여 웹 표준을 준수하는 프론트엔드 구조와 인터랙션을 구현합니다.</p>
-                        <div class="card-tags">
-                            <span class="tag">#Frontend</span>
-                            <span class="tag">#Web</span>
-                        </div>
+                        <h3>웹 프로그래밍</h3>
+                        <p>HTML, CSS, JavaScript를 활용하여 웹 표준을 준수하는 프론트엔드 구조를 구현합니다.</p>
+                        <span class="card-tag">#Web</span>
                     </div>
                     <div class="curriculum-card">
                         <h3>문제해결형 프로그래밍</h3>
-                        <p>알고리즘적 사고를 바탕으로 복잡한 문제를 논리적으로 분해하고 해결하는 능력을 배양했습니다.</p>
-                        <div class="card-tags">
-                            <span class="tag">#Algorithm</span>
-                            <span class="tag">#Logic</span>
-                        </div>
+                        <p>알고리즘적 사고를 바탕으로 복잡한 문제를 논리적으로 분해하고 해결합니다.</p>
+                        <span class="card-tag">#Logic</span>
                     </div>
                     <div class="curriculum-card">
                         <h3>공학설계입문</h3>
-                        <p>공학적 설계 프로세스를 이해하고, 창의적인 아이디어를 실제 프로토타입으로 구체화하는 과정을 경험했습니다.</p>
-                        <div class="card-tags">
-                            <span class="tag">#Engineering</span>
-                            <span class="tag">#Design</span>
-                        </div>
+                        <p>공학적 설계 프로세스를 이해하고, 창의적인 아이디어를 프로토타입으로 구체화했습니다.</p>
+                        <span class="card-tag">#Engineering</span>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer id="contact" class="main-footer">
-        <div class="container fade-in">
+    <footer class="main-footer">
+        <canvas id="footer-canvas" class="footer-canvas"></canvas>
+        <div class="container">
             <ul class="social-links">
-                <li><a href="https://github.com/onnilin-gif" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" fill="var(--text-color)"/></svg>
-                </a></li>
-                <li><a href="mailto:jieunjungbein@gmail.com" aria-label="Email">
-                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><title>Email</title><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z" fill="var(--text-color)"/></svg>
-                </a></li>
+                <li><a href="mailto:jieunjungbein@gmail.com" aria-label="Email">Email</a></li>
+                <li><a href="https://github.com/onnilin-gif" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a></li>
             </ul>
-            <p class="copyright">&copy; 2024 Onnilin. All Rights Reserved.</p>
+            <p class="copyright">&copy; 2025 JieunJung. All rights reserved.</p>
         </div>
     </footer>
 
+    <!--
+    ========================================================================
+    JAVASCRIPT (Triangulation Animation)
+    ========================================================================
+    -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const faders = document.querySelectorAll('.fade-in');
-            const appearOptions = {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
+    class TriangulationAnimation {
+        constructor(canvasId) {
+            this.canvas = document.getElementById(canvasId);
+            if (!this.canvas) return;
+            
+            this.ctx = this.canvas.getContext('2d');
+            this.points = [];
+            this.mouse = { x: null, y: null, radius: 150 };
+            
+            this.config = {
+                pointCount: 50,
+                maxDist: 120,
+                repulsion: 1,
+                speed: 0.5,
+                colors: ['#00ffff', '#4f46e5', '#a5b4fc'] // Cyan, Electric Blue, Pale Azure
             };
 
-            const appearOnScroll = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                });
-            }, appearOptions);
+            this.init();
+        }
 
-            faders.forEach(fader => {
-                appearOnScroll.observe(fader);
+        init() {
+            this.resizeCanvas();
+            this.createPoints();
+            this.animate();
+
+            window.addEventListener('resize', () => this.resizeCanvas());
+            this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+            this.canvas.addEventListener('mouseleave', () => this.handleMouseLeave());
+        }
+
+        resizeCanvas() {
+            const container = this.canvas.parentElement;
+            this.canvas.width = container.clientWidth;
+            this.canvas.height = container.clientHeight;
+            if (this.points.length > 0) {
+                this.points.forEach(p => p.checkBounds(this.canvas.width, this.canvas.height));
+            }
+        }
+        
+        handleMouseMove(e) {
+            const rect = this.canvas.getBoundingClientRect();
+            this.mouse.x = e.clientX - rect.left;
+            this.mouse.y = e.clientY - rect.top;
+        }
+
+        handleMouseLeave() {
+            this.mouse.x = null;
+            this.mouse.y = null;
+        }
+
+        createPoints() {
+            this.points = [];
+            for (let i = 0; i < this.config.pointCount; i++) {
+                this.points.push(new Point(this.canvas.width, this.canvas.height, this.config.speed));
+            }
+        }
+
+        animate() {
+            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            
+            this.points.forEach(point => {
+                point.update(this.mouse, this.config.repulsion);
+                point.draw(this.ctx);
             });
-        });
+
+            this.drawLines();
+
+            requestAnimationFrame(() => this.animate());
+        }
+
+        drawLines() {
+            for (let i = 0; i < this.points.length; i++) {
+                for (let j = i + 1; j < this.points.length; j++) {
+                    const dist = Math.hypot(this.points[i].x - this.points[j].x, this.points[i].y - this.points[j].y);
+
+                    if (dist < this.config.maxDist) {
+                        this.ctx.beginPath();
+                        const opacity = 1 - (dist / this.config.maxDist);
+                        
+                        const gradient = this.ctx.createLinearGradient(this.points[i].x, this.points[i].y, this.points[j].x, this.points[j].y);
+                        gradient.addColorStop(0, this.config.colors[i % 3]);
+                        gradient.addColorStop(1, this.config.colors[j % 3]);
+                        
+                        this.ctx.strokeStyle = gradient;
+                        this.ctx.globalAlpha = opacity;
+                        this.ctx.moveTo(this.points[i].x, this.points[i].y);
+                        this.ctx.lineTo(this.points[j].x, this.points[j].y);
+                        this.ctx.stroke();
+                        this.ctx.closePath();
+                    }
+                }
+            }
+            this.ctx.globalAlpha = 1;
+        }
+    }
+
+    class Point {
+        constructor(canvasWidth, canvasHeight, speed) {
+            this.x = Math.random() * canvasWidth;
+            this.y = Math.random() * canvasHeight;
+            this.vx = (Math.random() - 0.5) * speed;
+            this.vy = (Math.random() - 0.5) * speed;
+            this.radius = 2;
+            this.canvasWidth = canvasWidth;
+            this.canvasHeight = canvasHeight;
+        }
+
+        draw(ctx) {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = '#a5b4fc';
+            ctx.fill();
+        }
+
+        update(mouse, repulsion) {
+            this.x += this.vx;
+            this.y += this.vy;
+            
+            // Mouse interaction
+            if (mouse.x && mouse.y) {
+                const dx_mouse = this.x - mouse.x;
+                const dy_mouse = this.y - mouse.y;
+                const dist_mouse = Math.hypot(dx_mouse, dy_mouse);
+                
+                if (dist_mouse < mouse.radius) {
+                    const force = (mouse.radius - dist_mouse) / mouse.radius;
+                    this.x += (dx_mouse / dist_mouse) * force * repulsion;
+                    this.y += (dy_mouse / dist_mouse) * force * repulsion;
+                }
+            }
+
+            this.checkBounds(this.canvasWidth, this.canvasHeight);
+        }
+
+        checkBounds(width, height) {
+            this.canvasWidth = width;
+            this.canvasHeight = height;
+            if (this.x < 0 || this.x > this.canvasWidth) this.vx *= -1;
+            if (this.y < 0 || this.y > this.canvasHeight) this.vy *= -1;
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        new TriangulationAnimation('hero-canvas');
+        new TriangulationAnimation('footer-canvas');
+    });
+
     </script>
 </body>
 </html>
