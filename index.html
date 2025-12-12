@@ -162,6 +162,35 @@
             text-align: center;
             font-size: 1.15rem;
             line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color-1);
+            box-shadow: 0 0 10px var(--shadow-color);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-text {
+            text-align: center;
+        }
+
+        .profile-text p {
+            margin-bottom: 0.5rem;
         }
 
         .curriculum-grid {
@@ -224,6 +253,20 @@
 
         @media (min-width: 768px) {
             h1 { font-size: 4rem; }
+            .about-content {
+                flex-direction: row;
+                align-items: flex-start;
+                text-align: left;
+                gap: 3rem;
+            }
+            .profile-info {
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+            .profile-text {
+                text-align: left;
+            }
         }
 
         .theme-toggle {
@@ -267,6 +310,13 @@
             <div class="container">
                 <h2 class="section-title">About Me</h2>
                 <div class="about-content">
+                    <div class="profile-info">
+                        <img src="jieunim.jpg" alt="JieunJung Profile Picture" class="profile-image">
+                        <div class="profile-text">
+                            <p>한신대학교 AI/SW계열 25학번</p>
+                            <p><a href="mailto:jieunjungbein@gmail.com">jieunjungbein@gmail.com</a></p>
+                        </div>
+                    </div>
                     <p>소프트웨어의 무한한 가능성을 믿으며, 배움을 통해 세상을 최적화하고 싶은 개발자 정지은입니다.</p>
                 </div>
             </div>
