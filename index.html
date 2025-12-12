@@ -272,7 +272,7 @@
 
         .theme-toggle {
             position: fixed;
-            bottom: 20px;
+            top: 20px;
             right: 20px;
             z-index: 1000;
             background-color: var(--card-bg-color);
@@ -542,7 +542,7 @@
         function applyTheme(theme) {
             htmlElement.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
-            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+            themeToggle.textContent = theme === 'dark' ? '🌙' : '☀️';
             
             // Re-initialize animations with the new theme colors
             heroAnimation = new TriangulationAnimation('hero-canvas', theme);
