@@ -24,6 +24,19 @@
     -->
     <style>
         :root {
+            --bg-color: #f8f9fa;
+            --text-color: #495057;
+            --heading-color: #212529;
+            --card-bg-color: #ffffff;
+            --border-color: #dee2e6;
+            --accent-color-1: #007bff; /* Bright Blue */
+            --accent-color-2: #6f42c1; /* Purple */
+            --accent-color-3: #6c757d; /* Grey */
+            --shadow-color: rgba(0, 0, 0, 0.05);
+            --font-main: 'Noto Sans KR', sans-serif;
+        }
+
+        [data-theme="dark"] {
             --bg-color: #020c1b;
             --text-color: #cdd6f4;
             --heading-color: #ffffff;
@@ -33,7 +46,6 @@
             --accent-color-2: #4f46e5; /* Electric Blue */
             --accent-color-3: #a5b4fc; /* Pale Azure */
             --shadow-color: rgba(0, 255, 255, 0.1);
-            --font-main: 'Noto Sans KR', sans-serif;
         }
 
         *, *::before, *::after {
@@ -41,7 +53,7 @@
             margin: 0;
             padding: 0;
         }
-
+        
         html {
             scroll-behavior: smooth;
         }
@@ -51,6 +63,7 @@
             color: var(--text-color);
             font-family: var(--font-main);
             line-height: 1.7;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         h1, h2, h3 {
@@ -212,9 +225,33 @@
         @media (min-width: 768px) {
             h1 { font-size: 4rem; }
         }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
+
+    <div id="theme-toggle" class="theme-toggle">🌙</div>
 
     <main>
         <section class="hero" id="home">
@@ -286,8 +323,10 @@
     ========================================================================
     -->
     <script>
+    let heroAnimation, footerAnimation;
+
     class TriangulationAnimation {
-        constructor(canvasId) {
+        constructor(canvasId, theme = 'light') {
             this.canvas = document.getElementById(canvasId);
             if (!this.canvas) return;
             
@@ -295,25 +334,39 @@
             this.points = [];
             this.mouse = { x: null, y: null, radius: 150 };
             
+            this.setTheme(theme);
+            this.init();
+        }
+        
+        setTheme(theme) {
+            const styles = getComputedStyle(document.documentElement);
             this.config = {
                 pointCount: 50,
                 maxDist: 120,
                 repulsion: 1,
                 speed: 0.5,
-                colors: ['#00ffff', '#4f46e5', '#a5b4fc'] // Cyan, Electric Blue, Pale Azure
+                pointColor: styles.getPropertyValue('--accent-color-3').trim(),
+                colors: [
+                    styles.getPropertyValue('--accent-color-1').trim(),
+                    styles.getPropertyValue('--accent-color-2').trim(),
+                    styles.getPropertyValue('--accent-color-3').trim()
+                ]
             };
-
-            this.init();
         }
 
         init() {
             this.resizeCanvas();
             this.createPoints();
+            if(this.animationFrame) cancelAnimationFrame(this.animationFrame);
             this.animate();
 
-            window.addEventListener('resize', () => this.resizeCanvas());
-            this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
-            this.canvas.addEventListener('mouseleave', () => this.handleMouseLeave());
+            // These listeners only need to be set once
+            if (!this.canvas.dataset.listenersAttached) {
+                window.addEventListener('resize', () => this.resizeCanvas());
+                this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+                this.canvas.addEventListener('mouseleave', () => this.handleMouseLeave());
+                this.canvas.dataset.listenersAttached = true;
+            }
         }
 
         resizeCanvas() {
@@ -321,7 +374,9 @@
             this.canvas.width = container.clientWidth;
             this.canvas.height = container.clientHeight;
             if (this.points.length > 0) {
-                this.points.forEach(p => p.checkBounds(this.canvas.width, this.canvas.height));
+                 this.points.forEach(p => p.checkBounds(this.canvas.width, this.canvas.height));
+            } else {
+                this.createPoints();
             }
         }
         
@@ -339,7 +394,7 @@
         createPoints() {
             this.points = [];
             for (let i = 0; i < this.config.pointCount; i++) {
-                this.points.push(new Point(this.canvas.width, this.canvas.height, this.config.speed));
+                this.points.push(new Point(this.canvas.width, this.canvas.height, this.config.speed, this.config.pointColor));
             }
         }
 
@@ -353,7 +408,7 @@
 
             this.drawLines();
 
-            requestAnimationFrame(() => this.animate());
+            this.animationFrame = requestAnimationFrame(() => this.animate());
         }
 
         drawLines() {
@@ -383,12 +438,13 @@
     }
 
     class Point {
-        constructor(canvasWidth, canvasHeight, speed) {
+        constructor(canvasWidth, canvasHeight, speed, color) {
             this.x = Math.random() * canvasWidth;
             this.y = Math.random() * canvasHeight;
             this.vx = (Math.random() - 0.5) * speed;
             this.vy = (Math.random() - 0.5) * speed;
             this.radius = 2;
+            this.color = color;
             this.canvasWidth = canvasWidth;
             this.canvasHeight = canvasHeight;
         }
@@ -396,7 +452,7 @@
         draw(ctx) {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = '#a5b4fc';
+            ctx.fillStyle = this.color;
             ctx.fill();
         }
 
@@ -404,7 +460,6 @@
             this.x += this.vx;
             this.y += this.vy;
             
-            // Mouse interaction
             if (mouse.x && mouse.y) {
                 const dx_mouse = this.x - mouse.x;
                 const dy_mouse = this.y - mouse.y;
@@ -428,11 +483,31 @@
         }
     }
 
+    // --- Theme Management ---
     document.addEventListener('DOMContentLoaded', () => {
-        new TriangulationAnimation('hero-canvas');
-        new TriangulationAnimation('footer-canvas');
-    });
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
 
+        function applyTheme(theme) {
+            htmlElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+            
+            // Re-initialize animations with the new theme colors
+            heroAnimation = new TriangulationAnimation('hero-canvas', theme);
+            footerAnimation = new TriangulationAnimation('footer-canvas', theme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        applyTheme(savedTheme);
+    });
     </script>
 </body>
 </html>
